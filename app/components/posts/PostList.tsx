@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostList({ posts }: Props) {
   return (
-    <div className='h-full w-full flex flex-wrap gap-4 p-2'>
+    <div className='h-full w-full flex flex-wrap gap-4 p-2 overflow-auto'>
       {posts.map((post) => (
         <PostItem key={post.id} post={post.post} />
       ))}

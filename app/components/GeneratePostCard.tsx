@@ -1,6 +1,5 @@
 "use client"
 import { generatePost } from "@/lib/actions";
-import { revalidatePath } from "next/cache";
 import { useState } from "react";
 
 type Props = {}
@@ -18,7 +17,6 @@ export default function GeneratePostCard({ }: Props) {
     setIsLoading(true);
     const response = await generatePost(prompt);
     setPrompt("")
-    revalidatePath("/")
     setIsLoading(false);
   };
 

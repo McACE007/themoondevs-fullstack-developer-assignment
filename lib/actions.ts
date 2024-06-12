@@ -1,5 +1,6 @@
 "use server";
 import { GoogleGenerativeAI } from "@google/generative-ai"
+import { revalidatePath } from "next/cache";
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY as string)
 const googleSheetAPIURL = "https://sheetdb.io/api/v1/b7tslqs6bhxe4"
@@ -32,6 +33,7 @@ export async function generatePost(prompt: string) {
       })
     })
     const responseData = await r.json();
+    revalidatePath('/')
     console.log(responseData)
   } catch (e) {
     console.log(e)
